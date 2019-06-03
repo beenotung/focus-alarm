@@ -1,26 +1,26 @@
 {
   "name": "focus-alarm",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "author": {
-    "name": "Beeno Tung",
-    "email": "aabbcc1241@yahoo.com.hk",
-    "url": "https://beeno-tung.surge.sh"
-  },
+  "description": "Encourage concentrated working",
+  "keywords": [
+    "web",
+    "tool"
+  ],
+  "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run rawtest",
     "clean": "rimraf node_modules/@beenotung/tslib/index.* dist",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "postformat": "tslint -p . --fix",
     "prebuild": "npm run clean",
-    "build": "tsc",
-    "pretest": "npm run format && npm run build",
-    "rawtest": "ts-node test/index.ts",
-    "prepublishOnly": "npm run rawtest && npm run build"
+    "build": "parcel build --no-source-maps --experimental-scope-hoisting src/index.html",
+    "start": "parcel src/index.html",
+    "prerelease": "npm run build",
+    "release": "surge dist focus-alarm.surge.sh",
+    "postrelease": "echo published to https://focus-alarm.surge.sh",
+    "prepublishOnly": "exit 1"
   },
   "husky": {
     "hook": {
@@ -35,12 +35,23 @@
   },
   "devDependencies": {
     "@types/node": "8",
+    "cssnano": "^4.1.10",
     "husky": "^2.3.0",
+    "parcel": "^1.12.3",
     "prettier": "^1.17.1",
     "rimraf": "^2.6.3",
+    "surge": "^0.21.0",
     "ts-node": "^8.2.0",
     "tslint": "^5.17.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/focus-alarm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/focus-alarm/issues"
+  },
+  "homepage": "https://github.com/beenotung/focus-alarm#readme"
 }
