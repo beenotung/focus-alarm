@@ -26,7 +26,7 @@ function initDom() {
 
 initDom();
 dom.change.onclick = e => {
-  let answer = prompt('interval in unit of minute');
+  let answer = prompt('interval in unit of minute', interval / MINUTE);
   if (!answer) {
     return;
   }
@@ -70,7 +70,7 @@ function loop() {
     return;
   }
   alert(`${interval_text} has passed. What have you done?`);
-  let answer = prompt('continue?');
+  let answer = prompt('continue?', 'yes');
   if (answer) {
     init();
   }
