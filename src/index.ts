@@ -16,6 +16,7 @@ export let dom = {
   progress: document.querySelector('#progress') as HTMLProgressElement,
   left: document.querySelector('#left') as HTMLSpanElement,
 };
+
 // dom.container.style.display = 'initial';
 
 function initDom() {
@@ -26,7 +27,7 @@ function initDom() {
 
 initDom();
 dom.change.onclick = e => {
-  let answer = prompt('interval in unit of minute', interval / MINUTE);
+  let answer = prompt('interval in unit of minute', (interval / MINUTE).toString());
   if (!answer) {
     return;
   }
