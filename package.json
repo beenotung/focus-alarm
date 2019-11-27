@@ -18,8 +18,7 @@
     "build": "parcel build --no-source-maps --experimental-scope-hoisting src/index.html",
     "start": "parcel src/index.html",
     "prerelease": "npm run build",
-    "release": "surge dist focus-alarm.surge.sh",
-    "postrelease": "echo published to https://focus-alarm.surge.sh",
+    "release": "surge dist https://focus-alarm.surge.sh",
     "prepublishOnly": "exit 1"
   },
   "husky": {
